@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{% comment %} <!DOCTYPE html>
 <html>
     <head>
 
@@ -48,4 +48,45 @@
             </footer>
         </div>
     </body>
+</html> {% endcomment %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Classification App</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <script src="/static/js/bootstrap.js"></script>
+    <script src="/static/js/bootstrap.bundle.js"></script>
+    <script src="/static/js/jquery-3.5.1.js"></script>
+</head>
+<body style="background-color:#f8f9fa;">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">Image Classification</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="/">Home</a>
+                <a class="nav-item nav-link" href="/about/">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page content -->
+    <div class="container mt-4">
+        {% block body %}{% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light text-center text-muted mt-5 py-3">
+        <hr>
+        <small>Developed by <a href="http://www.datascienceanywhere.com" target="_blank">Data Science Anywhere</a></small>
+    </footer>
+</body>
 </html>

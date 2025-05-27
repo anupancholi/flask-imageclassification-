@@ -1,4 +1,4 @@
-{% extends 'index.html' %}
+{% comment %} {% extends 'index.html' %}
 
 {% block body %}
 
@@ -24,4 +24,25 @@
     }
 
 </style>
-{% endblock  %}
+{% endblock  %} {% endcomment %}
+
+
+{% extends 'index.html' %}
+
+{% block body %}
+<div class="card shadow p-4 mb-4" style="background-color:#EBEDEF;">
+    <h4 class="card-title">Welcome to Image Processing Web App</h4>
+    <p class="card-text">
+        <strong>What you will learn:</strong>
+        <ul>
+            <li>Skimage</li>
+            <li>Data Pre-processing</li>
+            <li>Feature Extraction</li>
+            <li>Machine Learning Model</li>
+            <li>Pipeline Model</li>
+            <li>Flask App</li>
+            <li>Deploy in PythonAnywhere</li>
+        </ul>
+    </p>
+</div>
+{% endblock %}

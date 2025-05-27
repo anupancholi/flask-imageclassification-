@@ -1,4 +1,4 @@
-{% extends 'index.html' %}
+{% comment %} {% extends 'index.html' %}
 
 {% block body %}
 
@@ -96,4 +96,56 @@
 
 
 
-{% endblock  %}
+{% endblock  %} {% endcomment %}
+
+{% extends 'index.html' %}
+
+{% block body %}
+<div class="card shadow p-4 mb-4" style="background-color:#EBEDEF;">
+    <h5>Upload an Image for Classification</h5>
+    <form action="#" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <input type="file" name="image_name" class="form-control-file" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <small class="form-text text-muted mt-2">
+        <strong>Instructions:</strong> Only upload ".png", ".jpg", or ".jpeg" files.
+    </small>
+</div>
+
+{% if fileupload %}
+<div class="card shadow mt-4 p-4" style="background-color:#EBEDEF;">
+    <h5>Prediction Results:</h5>
+    <div class="row">
+        <div class="col-md-8">
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Label</th>
+                        <th>Confidence Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for name, score in data.items() %}
+                    <tr>
+                        <td>{{ name }}</td>
+                        <td>{{ score }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-4">
+            <img src="/static/upload/{{ image_filename }}" alt="Uploaded image" class="img-fluid rounded" height="{{ height }}">
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% if extension %}
+<div class="alert alert-warning mt-4" role="alert">
+    <strong>Invalid File Extension:</strong> Please upload a file with ".png", ".jpg", or ".jpeg" extension.
+</div>
+{% endif %}
+{% endblock %}

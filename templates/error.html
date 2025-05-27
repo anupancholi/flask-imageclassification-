@@ -1,4 +1,4 @@
-{% extends 'index.html' %}
+{% comment %} {% extends 'index.html' %}
 
 {% block body %}
 <br><br>
@@ -6,4 +6,13 @@
     <h3>{{ message }}</h3>
 </div>
 
-{% endblock  %}
+{% endblock  %} {% endcomment %}
+
+{% extends 'index.html' %}
+
+{% block body %}
+<div class="alert alert-danger text-center mt-5" role="alert">
+    <h4 class="alert-heading">Oops! An error occurred.</h4>
+    <p>{{ message }}</p>
+</div>
+{% endblock %}
