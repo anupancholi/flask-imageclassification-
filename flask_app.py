@@ -50,37 +50,21 @@ def error500(error):
 def index():
     if request.method == "POST":
         upload_file = request.files["image_name"]
-        # filename = upload_file.filename
-
-        from werkzeug.utils import secure_filename
-
-        filename = secure_filename(upload_file.filename)
-        # print("The filename that has been uploaded =", filename)
-
-        app.logger.info(f"The filename that has been uploaded = {filename}")
-
+        filename = upload_file.filename
+        print("The filename that has been uploaded =", filename)
         # know the extension of filename
         # all only .jpg, .png, .jpeg, PNG
         ext = filename.split(".")[-1]
-        # print("The extension of the filename =", ext)
-
-        app.logger.info(f"The extension of the filename = {ext}")
-
+        print("The extension of the filename =", ext)
         if ext.lower() in ["png", "jpg", "jpeg"]:
             # saving the image
             path_save = os.path.join(UPLOAD_PATH, filename)
             upload_file.save(path_save)
-            # print("File saved sucessfully")
-
-            app.logger.info("File saved successfully")
-
+            print("File saved sucessfully")
             # send to pipeline model
             results = pipeline_model(path_save, scaler, model_sgd)
             hei = getheight(path_save)
-            # print(results)
-
-            app.logger.info(f"Prediction results: {results}")
-
+            print(results)
             return render_template(
                 "upload.html",
                 fileupload=True,
@@ -91,8 +75,7 @@ def index():
             )
 
         else:
-            # print("Use only the extension with .jpg, .png, .jpeg")
-            app.logger.warning("Invalid file extension. Allowed: .jpg, .png, .jpeg")
+            print("Use only the extension with .jpg, .png, .jpeg")
 
             return render_template("upload.html", extension=True, fileupload=False)
 
